@@ -1,0 +1,16 @@
+appender.ANALYTICS_EVENT_LOGFILE.type = RollingFile
+appender.ANALYTICS_EVENT_LOGFILE.name = ANALYTICS_EVENT_LOGFILE
+appender.ANALYTICS_EVENT_LOGFILE.fileName =${sys:carbon.home}/repository/logs/analytics_events.log
+appender.ANALYTICS_EVENT_LOGFILE.filePattern = ${sys:carbon.home}/repository/logs/analytics_events-%d{MM-dd-yyyy}.%i.log
+appender.ANALYTICS_EVENT_LOGFILE.layout.type = PatternLayout
+appender.ANALYTICS_EVENT_LOGFILE.layout.pattern=TID: [%tenantId] [%appName] [%d] [%X{Correlation-ID}] %5p {%c} — %mm%ex%n
+appender.ANALYTICS_EVENT_LOGFILE.policies.type = Policies
+appender.ANALYTICS_EVENT_LOGFILE.policies.time.type = TimeBasedTriggeringPolicy
+appender.ANALYTICS_EVENT_LOGFILE.policies.time.interval = 1
+appender.ANALYTICS_EVENT_LOGFILE.policies.time.modulate = true
+appender.ANALYTICS_EVENT_LOGFILE.policies.size.type = SizeBasedTriggeringPolicy
+appender.ANALYTICS_EVENT_LOGFILE.policies.size.size=10MB
+appender.ANALYTICS_EVENT_LOGFILE.strategy.type = DefaultRolloverStrategy
+appender.ANALYTICS_EVENT_LOGFILE.strategy.max = 20
+appender.ANALYTICS_EVENT_LOGFILE.filter.threshold.type = ThresholdFilter
+appender.ANALYTICS_EVENT_LOGFILE.filter.threshold.level = INFO
